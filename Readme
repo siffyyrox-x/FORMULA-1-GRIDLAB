@@ -1,0 +1,59 @@
+# GRIDLAB
+
+GRIDLAB is an interactive Formula 1 season dashboard built entirely with HTML, CSS, and JavaScript.
+
+It is designed as a lightweight, animated F1 experience that can be deployed directly through GitHub Pages without requiring a backend, database, authentication system, or build process.
+
+## Features
+
+- Current Formula 1 driver standings
+- Constructor standings
+- Current and upcoming race information
+- Full season calendar
+- Previous race results
+- Current Formula 1 driver grid
+- Real driver photographs
+- Animated driver cards
+- Click-to-flip driver cards with additional statistics and information
+- Current constructor and car gallery
+- Animated car movement and racing effects on hover
+- Click-to-flip constructor cards with additional team and car information
+- Team-specific colours and visual styling
+- Pit Wall race prediction system
+- Predictions stored locally using `localStorage`
+- Live public F1 data fetching with built-in fallback data
+- Responsive desktop, tablet, and mobile layouts
+- Futuristic motorsport-inspired typography and interface
+- Animated race-control backgrounds and micro-interactions
+- Reduced-motion accessibility support
+- Single-file architecture using only `index.html`
+
+## Technology
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- LocalStorage
+- Public Formula 1 data sources
+- GitHub Pages
+
+No frameworks, server, database, API keys, or package installation are required.
+
+## Deployment
+
+1. Create a GitHub repository.
+2. Upload `index.html` to the root of the repository.
+3. Open **Settings > Pages**.
+4. Select **Deploy from a branch**.
+5. Select the `main` branch and `/root`.
+6. Save the configuration.
+
+The website can then run directly through GitHub Pages.
+
+## Project Goal
+
+The project explores how a completely static website can still provide a rich, interactive and visually engaging Formula 1 experience through browser-side JavaScript, public motorsport data, animation, responsive design, and local storage.
+
+## P.S.
+
+This project was built through AI-assisted vibe coding, guided by my own creativity, ideas, and basic understanding of development. It was an experimental project focused on exploring what’s possible through AI-powered development.

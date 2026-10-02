@@ -48,6 +48,97 @@ body::after{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;opa
 @media(max-width:900px){.navlinks,.livechip{display:none}.menu{display:block}.navlinks.open{display:flex;position:absolute;left:16px;right:16px;top:61px;background:#0d1012;border:1px solid var(--line);border-radius:12px;padding:9px;flex-direction:column;align-items:stretch}.navlinks.open a{padding:12px}.hero{padding-top:115px}.hero-grid,.lab-grid,.predict-grid{grid-template-columns:1fr}.race-stage{min-height:460px}.nextcard{inset:11% 5% auto}.driver-grid{grid-template-columns:repeat(2,1fr)}.section-head{align-items:flex-start;flex-direction:column}.section{padding:78px 0}}
 @media(max-width:600px){.shell{width:min(calc(100% - 22px),var(--max))}.hero-copy h1{font-size:clamp(4rem,24vw,6.4rem)}.hero-grid{gap:0}.race-stage{min-height:440px}.nextcard{inset:10% 0 auto 0;padding:20px}.race-name{font-size:2.3rem}.countdown b{font-size:22px}.driver-grid{grid-template-columns:1fr}.driver-card{min-height:360px}.portrait-wrap{height:230px}.car-media{height:220px}.car-body{grid-template-columns:1fr}.team-rank{text-align:left}.form-grid{grid-template-columns:1fr}.standing-row{grid-template-columns:29px 1fr 55px}.standing-row .mini-bar{display:none}.project-row{grid-template-columns:25px 1fr 50px 48px}.section{padding:64px 0}.section-head h2{font-size:2.6rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}.reveal{opacity:1;transform:none}}
+
+.driver-grid .portrait-wrap{position:relative;background:
+ radial-gradient(circle at 50% 24%,rgba(255,255,255,.12),transparent 26%),
+ linear-gradient(180deg,rgba(255,255,255,.02),transparent 35%),
+ linear-gradient(180deg,color-mix(in srgb,var(--tc) 14%,#111),#0a0c0e 72%)}
+.driver-avatar{width:100%;height:100%;display:block;overflow:visible}
+.driver-avatar .drv-shadow{fill:rgba(0,0,0,.28)}
+.driver-avatar .drv-parallax{transform:translate3d(calc(var(--px)*6px),calc(var(--py)*5px),0);transition:transform .22s ease}
+.driver-card:hover .drv-parallax{transform:translate3d(calc(var(--px)*13px),calc(var(--py)*8px - 3px),0)}
+.driver-avatar .drv-body{transform-box:fill-box;transform-origin:center bottom;animation:drvSuitFloat 4.3s ease-in-out infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-head-wrap{transform-box:fill-box;transform-origin:center 70%;animation:drvHeadFloat 4.3s ease-in-out infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-bangs{transform-box:fill-box;transform-origin:center top;animation:drvHair 4.8s ease-in-out infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-eyes{transform-box:fill-box;transform-origin:center;animation:drvBlink 6.2s steps(1) infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-mouth{transform-box:fill-box;transform-origin:center;animation:drvMouth 4.2s ease-in-out infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-brow{opacity:.95}
+.driver-avatar .drv-visorGlow{opacity:.6;mix-blend-mode:screen;animation:drvSweep 5.5s linear infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-outline{stroke:rgba(255,255,255,.08);stroke-width:1.4;fill:none}
+.driver-avatar .drv-helmetline{stroke:rgba(255,255,255,.2);stroke-width:2;fill:none}
+.driver-avatar .drv-logo{font-family:"Orbitron",sans-serif;font-size:18px;font-weight:800;letter-spacing:.22em;fill:rgba(255,255,255,.7)}
+.driver-avatar .drv-cheek{opacity:.18}
+@keyframes drvHeadFloat{0%,100%{transform:translateY(1px) rotate(-.2deg)}50%{transform:translateY(-6px) rotate(.7deg)}}
+@keyframes drvSuitFloat{0%,100%{transform:translateY(1px)}50%{transform:translateY(-3px)}}
+@keyframes drvHair{0%,100%{transform:none}50%{transform:translateY(-1px) rotate(.8deg)}}
+@keyframes drvBlink{0%,91%,100%{transform:scaleY(1)}94%{transform:scaleY(.12)}}
+@keyframes drvMouth{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08) translateY(.4px)}}
+@keyframes drvSweep{0%{transform:translateX(-55px)}100%{transform:translateX(250px)}}
+
+.car-media{background:radial-gradient(circle at 35% 28%,rgba(255,255,255,.06),transparent 25%),linear-gradient(180deg,color-mix(in srgb,var(--tc) 8%,#0f1113),#0b0e10 72%)}
+.car-motion{display:flex;align-items:center;justify-content:center}
+.car-svg{width:100%;height:100%;display:block;overflow:visible}
+.car-svg .car-whole{transform:translateX(0);transition:transform .55s var(--spring),filter .3s}
+.car-card:hover:not(.flipped) .car-svg .car-whole{transform:translateX(38px)}
+.car-svg .wheel{transform-box:fill-box;transform-origin:center;animation:wheelSlow 7s linear infinite}
+.car-card:hover:not(.flipped) .car-svg .wheel{animation-duration:.38s}
+.car-svg .wheel-blur{opacity:0;transition:opacity .2s}
+.car-card:hover:not(.flipped) .car-svg .wheel-blur{opacity:.46}
+.car-svg .wing-vibe{animation:wingVibe 2.4s ease-in-out infinite}
+.car-card:hover:not(.flipped) .car-svg .wing-vibe{animation-duration:.55s}
+.car-svg .car-glint{opacity:.32;animation:carGlint 4.4s ease-in-out infinite}
+.car-svg .smoke{opacity:.16;animation:smokeTrail 3.4s ease-in-out infinite}
+.car-card:hover:not(.flipped) .car-svg .smoke{opacity:.42}
+.car-svg .car-mark{font-family:"Orbitron",sans-serif;font-size:28px;font-weight:800;letter-spacing:.22em;fill:rgba(255,255,255,.72)}
+@keyframes wheelSlow{to{transform:rotate(360deg)}}
+@keyframes wingVibe{0%,100%{transform:none}50%{transform:translateY(-1px)}}
+@keyframes carGlint{0%,100%{opacity:.18;transform:translateX(-10px)}50%{opacity:.4;transform:translateX(8px)}}
+@keyframes smokeTrail{0%,100%{transform:translateX(0);opacity:.16}50%{transform:translateX(-10px);opacity:.28}}
+
+
+/* Real-photo motion treatment: actual driver and car imagery, animated with CSS */
+.real-driver-stage{position:absolute;inset:0;overflow:hidden;background:
+ radial-gradient(circle at 50% 25%,color-mix(in srgb,var(--tc) 24%,transparent),transparent 38%),
+ linear-gradient(180deg,#111519 0%,#0b0e10 72%)}
+.real-driver-stage::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 18%,rgba(255,255,255,.035) 40%,transparent 62%);transform:translateX(-110%);animation:driverAmbientSweep 7s ease-in-out infinite;animation-delay:var(--delay);z-index:4;pointer-events:none}
+.real-driver-ghost,.real-driver-main{position:absolute;inset:-8% -5% -2%;width:110%;height:112%;object-fit:contain;object-position:50% 100%;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.real-driver-ghost{z-index:0;opacity:.22;filter:blur(11px) saturate(1.5);transform:translate3d(calc(var(--px)*-12px),calc(var(--py)*-8px),0) scale(1.09);animation:realDriverGhost 5.2s ease-in-out infinite;animation-delay:var(--delay)}
+.real-driver-main{z-index:2;filter:saturate(.94) contrast(1.045) drop-shadow(0 18px 22px rgba(0,0,0,.28));transform:translate3d(calc(var(--px)*8px),calc(var(--py)*6px),0) scale(1.035);transition:transform .26s var(--ease),filter .3s;animation:realDriverFloat 4.6s ease-in-out infinite;animation-delay:var(--delay)}
+.driver-card:hover:not(.flipped) .real-driver-main{transform:translate3d(calc(var(--px)*18px),calc(var(--py)*12px - 7px),0) scale(1.09);filter:saturate(1.08) contrast(1.06) drop-shadow(0 25px 28px rgba(0,0,0,.38))}
+.driver-card:hover:not(.flipped) .real-driver-ghost{opacity:.34;filter:blur(15px) saturate(1.7);transform:translate3d(calc(var(--px)*-21px),calc(var(--py)*-13px),0) scale(1.14)}
+.driver-photo-ring{position:absolute;z-index:1;left:50%;top:30%;width:63%;aspect-ratio:1;border:1px solid color-mix(in srgb,var(--tc) 34%,transparent);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 18px color-mix(in srgb,var(--tc) 5%,transparent),0 0 55px color-mix(in srgb,var(--tc) 15%,transparent);animation:driverRing 8s linear infinite;pointer-events:none}
+.driver-photo-ring::before,.driver-photo-ring::after{content:"";position:absolute;width:7px;height:7px;background:var(--tc);border-radius:50%;top:50%;left:-4px;box-shadow:0 0 14px var(--tc)}
+.driver-photo-ring::after{left:auto;right:-4px}
+.driver-card:hover:not(.flipped) .driver-photo-ring{animation-duration:2.7s}
+.real-driver-shine{position:absolute;z-index:3;top:-15%;bottom:-10%;left:-35%;width:20%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:skewX(-15deg);opacity:0;pointer-events:none}
+.driver-card:hover:not(.flipped) .real-driver-shine{opacity:1;animation:driverHoverShine .9s var(--ease) forwards}
+@keyframes realDriverFloat{0%,100%{translate:0 3px}50%{translate:0 -5px}}
+@keyframes realDriverGhost{0%,100%{translate:0 -2px}50%{translate:0 6px}}
+@keyframes driverRing{to{rotate:360deg}}
+@keyframes driverAmbientSweep{0%,70%{transform:translateX(-120%)}100%{transform:translateX(150%)}}
+@keyframes driverHoverShine{from{left:-35%}to{left:125%}}
+
+.real-car-stage{position:absolute;inset:0;overflow:hidden;background:#0c0f11}
+.real-car-bg,.real-car-main{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;object-position:center;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.real-car-bg{z-index:0;filter:blur(14px) saturate(1.35) brightness(.55);opacity:.45;transform:scale(1.08);transition:transform .55s var(--spring),filter .45s,opacity .35s}
+.real-car-main{z-index:1;filter:saturate(.93) contrast(1.06) brightness(.92);transform:translate3d(0,0,0) scale(1.035);transition:transform .58s var(--spring),filter .42s;animation:realCarIdle 6s ease-in-out infinite;animation-delay:var(--delay)}
+.car-card:hover:not(.flipped) .real-car-main{transform:translate3d(6.5%,0,0) scale(1.09) skewX(-.55deg);filter:saturate(1.13) contrast(1.09) brightness(1)}
+.car-card:hover:not(.flipped) .real-car-bg{transform:translate3d(-2.8%,0,0) scale(1.15);filter:blur(18px) saturate(1.5) brightness(.48);opacity:.62}
+.real-car-stage::after{content:"";position:absolute;z-index:2;inset:0;background:linear-gradient(180deg,rgba(4,5,6,.02) 35%,rgba(7,9,10,.3) 61%,#0c0f11 100%);pointer-events:none}
+.car-rush{position:absolute;z-index:3;left:-32%;width:55%;height:2px;opacity:0;background:linear-gradient(90deg,transparent,var(--tc),rgba(255,255,255,.72),transparent);filter:drop-shadow(0 0 8px var(--tc));pointer-events:none}
+.car-rush.r1{top:44%}.car-rush.r2{top:54%;width:43%;animation-delay:-.12s}.car-rush.r3{top:65%;width:64%;animation-delay:-.25s}
+.car-card:hover:not(.flipped) .car-rush{opacity:.82;animation:realRush .42s linear infinite}
+.car-ground-blur{position:absolute;z-index:3;left:8%;right:5%;bottom:14%;height:15%;opacity:0;background:repeating-linear-gradient(174deg,transparent 0 20px,color-mix(in srgb,var(--tc) 52%,transparent) 21px 23px,transparent 24px 42px);filter:blur(1px);transform:skewX(-15deg);transition:opacity .2s;pointer-events:none}
+.car-card:hover:not(.flipped) .car-ground-blur{opacity:.5;animation:groundRush .35s linear infinite}
+.car-photo-glint{position:absolute;z-index:4;inset:-20% auto -20% -30%;width:14%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-16deg);opacity:0;pointer-events:none}
+.car-card:hover:not(.flipped) .car-photo-glint{opacity:1;animation:carPhotoGlint .82s var(--ease) forwards}
+@keyframes realCarIdle{0%,100%{translate:0 0}50%{translate:1.2px -1.2px}}
+@keyframes realRush{from{transform:translateX(0)}to{transform:translateX(310px)}}
+@keyframes groundRush{to{transform:translateX(105px) skewX(-15deg)}}
+@keyframes carPhotoGlint{from{left:-30%}to{left:125%}}
+
+@media(max-width:600px){.real-driver-main,.real-driver-ghost{inset:-4% -8% -1%;width:116%;height:108%}.driver-photo-ring{width:72%;top:31%}.real-car-main,.real-car-bg{inset:-2%;width:104%;height:104%}}
+
 </style>
 <style id="gridlab-redesign">
 :root{--max:1240px;--radius:14px}
@@ -72,6 +163,53 @@ button,input,select{font-family:"Rajdhani",ui-sans-serif,system-ui,sans-serif}
 @media(max-width:900px){.hero-grid,.predict-grid{grid-template-columns:1fr}.hero{padding-top:92px}.hero-copy{max-width:700px}.race-stage{min-height:390px}.nextcard{inset:6% 4% auto}.driver-grid{grid-template-columns:repeat(2,1fr)}.pitlane{grid-template-columns:1fr}.section{padding:58px 0}.section-head{gap:10px}.navlinks.open{top:57px}.footer-mini{flex-direction:column;align-items:flex-start}.footer-mini span,.footer-mini span:last-child{text-align:left}}
 @media(max-width:600px){.shell{width:min(calc(100% - 22px),var(--max))}.hero{padding:88px 0 48px}.hero-copy h1{font-size:clamp(2.8rem,13vw,4.2rem)}.hero-copy .lede{font-size:.98rem}.race-stage{min-height:360px}.nextcard{inset:6% 0 auto;padding:18px;min-height:300px}.race-name{font-size:1.85rem}.countdown b{font-size:19px}.hero-index{font-size:82px}.driver-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.driver-card{aspect-ratio:.73}.portrait-wrap{min-height:0;height:66%}.driver-no{font-size:48px}.driver-info{padding:0 9px 9px}.driver-info h3{font-size:13px}.driver-code{font-size:6px}.flip-hint{font-size:5.2px;padding-top:6px}.driver-back{padding:13px}.driver-back h3{font-size:17px;margin:13px 0 5px}.driver-back>p{font-size:9px}.back-top{font-size:6px}.back-top b{font-size:15px}.back-stats{gap:5px;margin:12px 0}.back-stats>div{padding:7px}.back-stats b{font-size:11px}.back-stats span{font-size:6px}.back-line{font-size:7px}.car-card{aspect-ratio:1.25}.car-media{min-height:0;height:70%}.car-body{bottom:22px;padding:12px 13px 7px}.car-body h3{font-size:18px}.car-back{padding:15px}.car-back h3{font-size:23px}.car-hint{left:13px;right:13px}.standing-row{grid-template-columns:28px 1fr 54px}.section-head h2{font-size:2.05rem}.section-head p{font-size:12px}.form-grid{grid-template-columns:1fr}.footer-mini{gap:7px}}
 @media(max-width:350px){.driver-grid{grid-template-columns:1fr}.driver-card{aspect-ratio:.9}.driver-info h3{font-size:17px}.driver-back{padding:18px}.driver-back h3{font-size:24px}.back-stats b{font-size:14px}}
+
+.driver-grid .portrait-wrap{position:relative;background:
+ radial-gradient(circle at 50% 24%,rgba(255,255,255,.12),transparent 26%),
+ linear-gradient(180deg,rgba(255,255,255,.02),transparent 35%),
+ linear-gradient(180deg,color-mix(in srgb,var(--tc) 14%,#111),#0a0c0e 72%)}
+.driver-avatar{width:100%;height:100%;display:block;overflow:visible}
+.driver-avatar .drv-shadow{fill:rgba(0,0,0,.28)}
+.driver-avatar .drv-parallax{transform:translate3d(calc(var(--px)*6px),calc(var(--py)*5px),0);transition:transform .22s ease}
+.driver-card:hover .drv-parallax{transform:translate3d(calc(var(--px)*13px),calc(var(--py)*8px - 3px),0)}
+.driver-avatar .drv-body{transform-box:fill-box;transform-origin:center bottom;animation:drvSuitFloat 4.3s ease-in-out infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-head-wrap{transform-box:fill-box;transform-origin:center 70%;animation:drvHeadFloat 4.3s ease-in-out infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-bangs{transform-box:fill-box;transform-origin:center top;animation:drvHair 4.8s ease-in-out infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-eyes{transform-box:fill-box;transform-origin:center;animation:drvBlink 6.2s steps(1) infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-mouth{transform-box:fill-box;transform-origin:center;animation:drvMouth 4.2s ease-in-out infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-brow{opacity:.95}
+.driver-avatar .drv-visorGlow{opacity:.6;mix-blend-mode:screen;animation:drvSweep 5.5s linear infinite;animation-delay:var(--delay)}
+.driver-avatar .drv-outline{stroke:rgba(255,255,255,.08);stroke-width:1.4;fill:none}
+.driver-avatar .drv-helmetline{stroke:rgba(255,255,255,.2);stroke-width:2;fill:none}
+.driver-avatar .drv-logo{font-family:"Orbitron",sans-serif;font-size:18px;font-weight:800;letter-spacing:.22em;fill:rgba(255,255,255,.7)}
+.driver-avatar .drv-cheek{opacity:.18}
+@keyframes drvHeadFloat{0%,100%{transform:translateY(1px) rotate(-.2deg)}50%{transform:translateY(-6px) rotate(.7deg)}}
+@keyframes drvSuitFloat{0%,100%{transform:translateY(1px)}50%{transform:translateY(-3px)}}
+@keyframes drvHair{0%,100%{transform:none}50%{transform:translateY(-1px) rotate(.8deg)}}
+@keyframes drvBlink{0%,91%,100%{transform:scaleY(1)}94%{transform:scaleY(.12)}}
+@keyframes drvMouth{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08) translateY(.4px)}}
+@keyframes drvSweep{0%{transform:translateX(-55px)}100%{transform:translateX(250px)}}
+
+.car-media{background:radial-gradient(circle at 35% 28%,rgba(255,255,255,.06),transparent 25%),linear-gradient(180deg,color-mix(in srgb,var(--tc) 8%,#0f1113),#0b0e10 72%)}
+.car-motion{display:flex;align-items:center;justify-content:center}
+.car-svg{width:100%;height:100%;display:block;overflow:visible}
+.car-svg .car-whole{transform:translateX(0);transition:transform .55s var(--spring),filter .3s}
+.car-card:hover:not(.flipped) .car-svg .car-whole{transform:translateX(38px)}
+.car-svg .wheel{transform-box:fill-box;transform-origin:center;animation:wheelSlow 7s linear infinite}
+.car-card:hover:not(.flipped) .car-svg .wheel{animation-duration:.38s}
+.car-svg .wheel-blur{opacity:0;transition:opacity .2s}
+.car-card:hover:not(.flipped) .car-svg .wheel-blur{opacity:.46}
+.car-svg .wing-vibe{animation:wingVibe 2.4s ease-in-out infinite}
+.car-card:hover:not(.flipped) .car-svg .wing-vibe{animation-duration:.55s}
+.car-svg .car-glint{opacity:.32;animation:carGlint 4.4s ease-in-out infinite}
+.car-svg .smoke{opacity:.16;animation:smokeTrail 3.4s ease-in-out infinite}
+.car-card:hover:not(.flipped) .car-svg .smoke{opacity:.42}
+.car-svg .car-mark{font-family:"Orbitron",sans-serif;font-size:28px;font-weight:800;letter-spacing:.22em;fill:rgba(255,255,255,.72)}
+@keyframes wheelSlow{to{transform:rotate(360deg)}}
+@keyframes wingVibe{0%,100%{transform:none}50%{transform:translateY(-1px)}}
+@keyframes carGlint{0%,100%{opacity:.18;transform:translateX(-10px)}50%{opacity:.4;transform:translateX(8px)}}
+@keyframes smokeTrail{0%,100%{transform:translateX(0);opacity:.16}50%{transform:translateX(-10px);opacity:.28}}
+
 </style>
 </head>
 <body>
@@ -81,8 +219,8 @@ button,input,select{font-family:"Rajdhani",ui-sans-serif,system-ui,sans-serif}
 <section class="hero" id="top"><div class="shell hero-grid"><div class="hero-copy reveal"><div class="eyebrow">2026 Formula 1 season</div><h1>GRID<i>LAB</i></h1><p class="lede">A focused F1 season dashboard for standings, the current race, drivers, machines, calendar, results and your Pit Wall prediction.</p><div class="hero-actions"><a class="btn primary" href="#standings">View standings</a><a class="btn" href="#predict">Open Pit Wall</a></div></div><div class="race-stage reveal"><div class="race-orbit"></div><div class="nextcard" id="nextcard"><div class="loading">Loading race center</div></div><div class="hero-index">26</div></div></div></section>
 <div class="ticker"><div class="ticker-track" id="ticker"></div></div>
 <section class="section" id="standings"><div class="shell"><div class="section-head reveal"><div><div class="eyebrow">Championship</div><h2>Standings</h2></div><p>Drivers and constructors, updated from the public season feed.</p></div><div class="dashboard"><div class="board reveal"><div class="cardbar"><span>2026 championship</span><div class="tabs"><button class="tab active" data-table="drivers">Drivers</button><button class="tab" data-table="constructors">Constructors</button></div></div><div class="standings" id="standingsList"><div class="loading">Loading standings</div></div></div><div class="latest reveal"><div class="cardbar"><span>Last completed Grand Prix</span><span id="latestRound">--</span></div><div class="latest-body" id="latestBody"><div class="loading">Loading latest result</div></div></div></div></div></section>
-<section class="section" id="drivers"><div class="shell"><div class="section-head reveal"><div><div class="eyebrow">Current grid</div><h2>Drivers</h2></div><p>Hover for motion. Click any driver to flip the card and reveal season details.</p></div><div class="driver-grid" id="driverGrid"><div class="loading">Loading current grid</div></div></div></section>
-<section class="section" id="cars"><div class="shell"><div class="section-head reveal"><div><div class="eyebrow">2026 grid</div><h2>Cars & constructors</h2></div><p>Hover to launch the car forward. Click a constructor card to flip it for key team details.</p></div><div class="pitlane" id="carGrid"></div></div></section>
+<section class="section" id="drivers"><div class="shell"><div class="section-head reveal"><div><div class="eyebrow">Current grid</div><h2>Drivers</h2></div><p>Real current driver photography with layered motion and parallax. Click any card to flip it for season details.</p></div><div class="driver-grid" id="driverGrid"><div class="loading">Loading current grid</div></div></div></section>
+<section class="section" id="cars"><div class="shell"><div class="section-head reveal"><div><div class="eyebrow">2026 grid</div><h2>Cars & constructors</h2></div><p>Real 2026 car photography in one consistent motion frame. Hover to launch the image forward and click to flip for team details.</p></div><div class="pitlane" id="carGrid"></div></div></section>
 <section class="section" id="calendar"><div class="shell"><div class="section-head reveal"><div><div class="eyebrow">Season route</div><h2>Race calendar</h2></div><p>Completed, current and upcoming rounds in one compact season strip.</p></div><div class="calendar-wrap reveal"><div class="calendar-track" id="calendarTrack"></div></div></div></section>
 <section class="section tight" id="results"><div class="shell"><div class="section-head reveal"><div><div class="eyebrow">Completed rounds</div><h2>Previous races</h2></div><p>Completed rounds and race winners.</p></div><div class="calendar-wrap reveal"><div class="calendar-track" id="resultsTrack"></div></div></div></section>
 <section class="section" id="predict"><div class="shell"><div class="section-head reveal"><div><div class="eyebrow">Race weekend game</div><h2>Pit Wall</h2></div><p>Make a podium, fastest-lap and constructor prediction for the next race. Your pick stays in this browser.</p></div><div class="predict-grid"><div class="predict-intro reveal"><div class="eyebrow">Prediction sheet</div><h3 id="predictRace">Next Grand Prix</h3><p id="predictDesc">Loading the next race and current driver list.</p><div class="predict-score"><b id="scoreValue">--</b><span id="scoreLabel">No scored prediction yet</span></div></div><div class="predict-form reveal"><div class="form-grid"><div class="field"><label for="p1">Winner</label><select id="p1"></select></div><div class="field"><label for="p2">Second</label><select id="p2"></select></div><div class="field"><label for="p3">Third</label><select id="p3"></select></div><div class="field"><label for="fastest">Fastest lap</label><select id="fastest"></select></div><div class="field"><label for="constructorPick">Winning constructor</label><select id="constructorPick"></select></div><div class="field"><label for="safety">Safety car?</label><select id="safety"><option value="yes">Yes</option><option value="no">No</option></select></div></div><div class="predict-actions"><button class="btn primary" id="savePrediction">Save prediction</button><button class="btn" id="scorePrediction">Score if finished</button><span class="saved-note" id="savedNote"></span></div></div></div></div></section>
@@ -106,6 +244,7 @@ const TEAM={
  'Aston Martin':{key:'aston_martin',color:'#229971',full:'Aston Martin Aramco Formula One Team',car:'AMR26',pu:'Honda',chief:'Adrian Newey',points:3,pos:10},
  'Cadillac':{key:'cadillac',color:'#A5A5A5',full:'Cadillac Formula 1 Team',car:'MAC-26',pu:'Ferrari',chief:'Marcin Budkowski',points:0,pos:11}
 };
+
 const FALLBACK_DRIVERS=[
  ['NOR',1,'Lando','Norris','McLaren',186,2,'British','https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LANNOR01_Lando_Norris/lannor01.png.transform/1col/image.png'],
  ['VER',3,'Max','Verstappen','Red Bull Racing',163,0,'Dutch','https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/1col/image.png'],
@@ -169,9 +308,9 @@ function renderStandings(type='drivers'){
  const el=qs('#standingsList'); if(type==='drivers'){const max=Math.max(...state.standings.map(x=>+x.points));el.innerHTML=state.standings.slice(0,12).map(d=>{const t=teamInfo(d.team);return `<div class="standing-row" style="--tc:${t.color}"><div class="standing-pos">${d.position}</div><div class="driver-line"><b>${esc(d.first)} ${esc(d.last)}</b><span>${esc(d.team)} · ${d.wins} win${d.wins==1?'':'s'}</span></div><div class="mini-bar"><i style="--w:${max?d.points/max*100:0}%"></i></div><div class="pts">${d.points} <small>PTS</small></div></div>`}).join('')}else{const max=Math.max(...state.constructors.map(x=>+x.points));el.innerHTML=state.constructors.map(c=>{const t=teamInfo(c.name);return `<div class="standing-row" style="--tc:${t.color}"><div class="standing-pos">${c.position}</div><div class="driver-line"><b>${esc(c.name)}</b><span>${esc(t.car)} · ${esc(t.pu)}</span></div><div class="mini-bar"><i style="--w:${max?c.points/max*100:0}%"></i></div><div class="pts">${c.points} <small>PTS</small></div></div>`}).join('')}
 }
 function renderLatest(){const b=qs('#latestBody');if(state.lastResult?.Results?.length){const r=state.lastResult,top=r.Results.slice(0,3);qs('#latestRound').textContent=`R${r.round}`;b.innerHTML=`<div class="latest-kicker">${formatDate(new Date(r.date+'T12:00:00Z'))}</div><h3>${esc(r.raceName)}</h3><p>${esc(r.Circuit?.circuitName||'')} · ${esc(r.Circuit?.Location?.locality||'')}</p><div class="podium">${top.map((x,i)=>{const team=normalizeTeam(x.Constructor?.name||'');const t=teamInfo(team);return `<div class="pod" style="--tc:${t.color}"><div class="num">${i+1}</div><div><b>${esc(x.Driver.givenName)} ${esc(x.Driver.familyName)}</b><span>${esc(team)} · ${esc(x.Time?.time||x.status||'')}</span></div></div>`}).join('')}</div>`}else{qs('#latestRound').textContent='R15';b.innerHTML=`<div class="latest-kicker">26 Sep 2026</div><h3>Azerbaijan Grand Prix</h3><p>Baku City Circuit · Baku</p><div class="podium"><div class="pod" style="--tc:${TEAM.Mercedes.color}"><div class="num">1</div><div><b>George Russell</b><span>Mercedes · 1:38:02.143</span></div></div><div class="pod" style="--tc:${TEAM['Red Bull Racing'].color}"><div class="num">2</div><div><b>Max Verstappen</b><span>Red Bull Racing · +0.196s</span></div></div><div class="pod" style="--tc:${TEAM['Red Bull Racing'].color}"><div class="num">3</div><div><b>Isack Hadjar</b><span>Red Bull Racing · +10.704s</span></div></div></div>`}}
-function renderDrivers(){const byCode=Object.fromEntries(state.standings.map(d=>[d.code,d]));const sorted=state.drivers.slice().sort((a,b)=>(byCode[a.code]?.position||99)-(byCode[b.code]?.position||99));qs('#driverGrid').innerHTML=sorted.map((d,i)=>{const st=byCode[d.code]||d,t=teamInfo(d.team);return `<article class="driver-card flip-card reveal" style="--tc:${t.color};--delay:${(i%6)*-.42}s" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(d.first+' '+d.last)}. Click to flip for details."><div class="driver-flip"><div class="driver-face driver-front"><div class="driver-no">${d.number}</div><div class="portrait-wrap"><div class="portrait-motion"><img class="driver-photo" loading="lazy" src="${d.photo}" alt="${esc(d.first+' '+d.last)}"></div><i class="scanline"></i><i class="face-hud"></i></div><div class="driver-info"><div class="driver-code">${esc(d.code)} / ${esc(d.team)}</div><h3>${esc(d.first)} <strong>${esc(d.last)}</strong></h3><div class="flip-hint"><span>DRIVER ${String(d.number).padStart(2,'0')}</span><span>CLICK TO FLIP</span></div></div></div><div class="driver-face driver-back"><div class="back-top"><span>${esc(d.code)}</span><b>#${d.number}</b></div><h3>${esc(d.first)}<br><strong>${esc(d.last)}</strong></h3><p>${esc(d.nationality||'Formula 1 driver')} · ${esc(d.team)}</p><div class="back-stats"><div><b>P${st.position??'—'}</b><span>2026 standing</span></div><div><b>${st.points??0}</b><span>Points</span></div><div><b>${st.wins??0}</b><span>2026 wins</span></div><div><b>${d.number}</b><span>Race number</span></div></div><div class="back-line"><span style="background:${t.color}"></span>${esc(t.car)} / ${esc(t.pu)}</div><div class="flip-hint"><span>${esc(d.team)}</span><span>CLICK TO RETURN</span></div></div></div></article>`}).join('');observeReveals();bindFlipCards('#driverGrid .flip-card')}
+function renderDrivers(){const byCode=Object.fromEntries(state.standings.map(d=>[d.code,d]));const sorted=state.drivers.slice().sort((a,b)=>(byCode[a.code]?.position||99)-(byCode[b.code]?.position||99));qs('#driverGrid').innerHTML=sorted.map((d,i)=>{const st=byCode[d.code]||d,t=teamInfo(d.team);return `<article class="driver-card flip-card reveal" style="--tc:${t.color};--delay:${(i%7)*-.37}s" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(d.first+' '+d.last)}. Click to flip for details."><div class="driver-flip"><div class="driver-face driver-front"><div class="driver-no">${d.number}</div><div class="portrait-wrap"><div class="real-driver-stage"><div class="driver-photo-ring"></div><img class="real-driver-ghost" loading="lazy" src="${d.photo}" alt="" aria-hidden="true"><img class="real-driver-main" loading="lazy" src="${d.photo}" alt="${esc(d.first+' '+d.last)}"><i class="real-driver-shine"></i></div><i class="scanline"></i><i class="face-hud"></i></div><div class="driver-info"><div class="driver-code">${esc(d.code)} / ${esc(d.team)}</div><h3>${esc(d.first)} <strong>${esc(d.last)}</strong></h3><div class="flip-hint"><span>REAL DRIVER / MOTION</span><span>CLICK TO FLIP</span></div></div></div><div class="driver-face driver-back"><div class="back-top"><span>${esc(d.code)}</span><b>#${d.number}</b></div><h3>${esc(d.first)}<br><strong>${esc(d.last)}</strong></h3><p>${esc(d.nationality||'Formula 1 driver')} · ${esc(d.team)}</p><div class="back-stats"><div><b>P${st.position??'—'}</b><span>2026 standing</span></div><div><b>${st.points??0}</b><span>Points</span></div><div><b>${st.wins??0}</b><span>2026 wins</span></div><div><b>${d.number}</b><span>Race number</span></div></div><div class="back-line"><span style="background:${t.color}"></span>${esc(t.car)} / ${esc(t.pu)}</div><div class="flip-hint"><span>${esc(d.team)}</span><span>CLICK TO RETURN</span></div></div></div></article>`}).join('');observeReveals();bindFlipCards('#driverGrid .flip-card')}
 function filePath(name){return 'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(name)+'?width=1400'}
-function renderCars(){const cby=Object.fromEntries(state.constructors.map(c=>[normalizeTeam(c.name),c]));const data=CAR_PHOTOS.map(x=>({name:x[0],file:x[1],link:x[2],...teamInfo(x[0])})).sort((a,b)=>(cby[a.name]?.position||a.pos||99)-(cby[b.name]?.position||b.pos||99));qs('#carGrid').innerHTML=data.map((t,i)=>{const c=cby[t.name]||{position:t.pos,points:t.points,wins:0};return `<article class="car-card flip-card reveal" style="--tc:${t.color};--delay:${(i%5)*-.5}s" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(t.name)} ${esc(t.car)}. Click to flip for constructor details."><div class="car-flip"><div class="car-face car-front"><div class="car-media"><div class="car-motion"><img loading="lazy" src="${filePath(t.file)}" alt="${esc(t.name+' '+t.car+' 2026 Formula 1 car')}"></div><i class="speedlines s1"></i><i class="speedlines s2"></i><i class="track-streaks"></i></div><div class="car-body"><div><div class="car-model">${esc(t.car)} / ${esc(t.pu)}</div><h3>${esc(t.name)}</h3></div><div class="team-rank"><b>P${c.position??t.pos}</b><span>${c.points??t.points} pts</span></div></div><div class="flip-hint car-hint"><span>2026 MACHINE</span><span>CLICK TO FLIP</span></div></div><div class="car-face car-back"><div class="back-top"><span>CONSTRUCTOR</span><b>P${c.position??t.pos}</b></div><h3>${esc(t.name)}</h3><div class="constructor-mark">${esc(t.car)}</div><div class="back-stats car-stats"><div><b>${c.points??t.points}</b><span>Points</span></div><div><b>${c.wins??0}</b><span>2026 wins</span></div><div><b>${esc(t.pu)}</b><span>Power unit</span></div><div><b>${esc(t.car)}</b><span>Chassis</span></div></div><p class="team-lead">Team lead · ${esc(t.chief)}</p><div class="flip-hint"><span>${esc(t.full)}</span><span>CLICK TO RETURN</span></div></div></div><a class="credit" href="${t.link}" target="_blank" rel="noopener" aria-label="Car photo source">PHOTO</a></article>`}).join('');observeReveals();bindFlipCards('#carGrid .flip-card')}
+function renderCars(){const cby=Object.fromEntries(state.constructors.map(c=>[normalizeTeam(c.name),c]));const photos=Object.fromEntries(CAR_PHOTOS.map(x=>[x[0],{file:x[1],link:x[2]}]));const data=Object.keys(TEAM).map(name=>({name,...TEAM[name],...(photos[name]||{})})).sort((a,b)=>(cby[a.name]?.position||a.pos||99)-(cby[b.name]?.position||b.pos||99));qs('#carGrid').innerHTML=data.map((t,i)=>{const c=cby[t.name]||{position:t.pos,points:t.points,wins:0},src=t.file?filePath(t.file):'';return `<article class="car-card flip-card reveal" style="--tc:${t.color};--delay:${(i%5)*-.45}s" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(t.name)} ${esc(t.car)}. Click to flip for constructor details."><div class="car-flip"><div class="car-face car-front"><div class="car-media"><div class="real-car-stage"><img class="real-car-bg" loading="lazy" src="${src}" alt="" aria-hidden="true"><img class="real-car-main" loading="lazy" src="${src}" alt="${esc(t.name+' '+t.car+' 2026 Formula 1 car')}"><i class="car-rush r1"></i><i class="car-rush r2"></i><i class="car-rush r3"></i><i class="car-ground-blur"></i><i class="car-photo-glint"></i></div></div><div class="car-body"><div><div class="car-model">${esc(t.car)} / ${esc(t.pu)}</div><h3>${esc(t.name)}</h3></div><div class="team-rank"><b>P${c.position??t.pos}</b><span>${c.points??t.points} pts</span></div></div><div class="flip-hint car-hint"><span>REAL 2026 CAR / MOTION</span><span>CLICK TO FLIP</span></div></div><div class="car-face car-back"><div class="back-top"><span>CONSTRUCTOR</span><b>P${c.position??t.pos}</b></div><h3>${esc(t.name)}</h3><div class="constructor-mark">${esc(t.car)}</div><div class="back-stats car-stats"><div><b>${c.points??t.points}</b><span>Points</span></div><div><b>${c.wins??0}</b><span>2026 wins</span></div><div><b>${esc(t.pu)}</b><span>Power unit</span></div><div><b>${esc(t.car)}</b><span>Chassis</span></div></div><p class="team-lead">Team lead · ${esc(t.chief)}</p><div class="flip-hint"><span>${esc(t.full)}</span><span>CLICK TO RETURN</span></div></div></div>${t.link?`<a class="credit" href="${t.link}" target="_blank" rel="noopener" aria-label="Car photo source">PHOTO</a>`:''}</article>`}).join('');observeReveals();bindFlipCards('#carGrid .flip-card')}
 function renderCalendar(){const now=Date.now(),next=nowNext();qs('#calendarTrack').innerHTML=state.races.map(r=>{const done=r.date.getTime()+4*3600e3<now,nn=r.round===next.round;const w=state.winners.find(x=>x.round===r.round);return `<article class="race-card ${done?'done':''} ${nn?'next':''}"><div class="race-round">Round ${r.round}</div><h3>${esc(r.raceName)}</h3><div class="race-date">${formatDate(r.date)}</div><div class="race-circuit">${esc(r.circuit)}<br>${esc(r.locality)}, ${esc(r.country)}</div><div class="race-state"><span>${done?(w?'Winner '+esc(w.winner):'Completed'):'Upcoming'}</span><span class="${r.sprint?'sprint':''}">${r.sprint?'Sprint':'Grand Prix'}</span></div></article>`}).join('')}
 
 function renderResults(){
